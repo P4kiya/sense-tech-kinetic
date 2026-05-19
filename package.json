@@ -1,22 +1,13 @@
 {
-  "name": "mobile",
+  "name": "sense-tech-kinetic",
   "version": "1.0.0",
-  "main": "index.ts",
+  "private": true,
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
-  },
-  "dependencies": {
-    "expo": "~54.0.33",
-    "expo-status-bar": "~3.0.9",
-    "react": "19.1.0",
-    "react-native": "0.81.5"
-  },
-  "devDependencies": {
-    "@types/react": "~19.1.0",
-    "typescript": "~5.9.2"
-  },
-  "private": true
+    "start": "npm run start --prefix mobile",
+    "android": "npm run android --prefix mobile",
+    "ios": "npm run ios --prefix mobile",
+    "lint": "npm run lint --prefix mobile",
+    "web": "npm run dev --prefix web",
+    "web:build": "npm run build --prefix web"
+  }
 }

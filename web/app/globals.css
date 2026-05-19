@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+/* SENSE-TECH Kinetic design tokens — matches mobile/src/theme */
+:root {
+  --background: #f5f6f8;
+  --surface: #ffffff;
+  --surface-container-highest: #eef1f5;
+  --primary: #4f6bed;
+  --primary-container: #eef1fd;
+  --on-primary: #ffffff;
+  --on-surface: #1c2130;
+  --on-surface-variant: #6b7280;
+  --error: #e5484d;
+  --error-container: #fef2f2;
+  --on-error-container: #b42318;
+  --warning: #c98a1a;
+  --warning-container: #fef7ec;
+  --success: #0d9f6e;
+  --success-container: #ecfdf5;
+  --outline: #d8dce5;
+  --outline-variant: #e8ebf0;
+  /* Layered shadows — softer, modern float */
+  --shadow-sm: 0 1px 2px rgba(28, 33, 48, 0.04), 0 4px 14px rgba(28, 33, 48, 0.05);
+  --shadow-md: 0 4px 8px rgba(28, 33, 48, 0.04), 0 16px 40px rgba(28, 33, 48, 0.08);
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+  --spacing-screen-x: 24px;
+  --spacing-section: 20px;
+  --spacing-card: 20px;
+  --spacing-item: 12px;
+  --spacing-tight: 8px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-primary: var(--primary);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary: var(--on-primary);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-error: var(--error);
+  --color-error-container: var(--error-container);
+  --color-on-error-container: var(--on-error-container);
+  --color-warning: var(--warning);
+  --color-warning-container: var(--warning-container);
+  --color-success: var(--success);
+  --color-success-container: var(--success-container);
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-full: var(--radius-full);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+}
+
+body {
+  background: var(--background);
+  color: var(--on-surface);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Subtle hero wash — keeps tokens, adds depth */
+.hero-glow {
+  background-image: radial-gradient(
+    ellipse 85% 55% at 50% -15%,
+    color-mix(in srgb, var(--primary) 14%, transparent),
+    transparent 58%
+  );
+}
+
+/* Typography presets — mobile/src/theme/typography.ts */
+.text-brand {
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 2px;
+  color: var(--on-surface);
+}
+
+.text-page-title {
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: -0.6px;
+  line-height: 1.15;
+  color: var(--on-surface);
+}
+
+@media (min-width: 768px) {
+  .text-page-title {
+    font-size: 2.5rem;
+    letter-spacing: -0.08em;
+  }
+}
+
+.text-lead-title {
+  font-weight: 700;
+  font-size: 1.625rem;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+  color: var(--on-surface);
+}
+
+@media (min-width: 768px) {
+  .text-lead-title {
+    font-size: 2rem;
+    letter-spacing: -0.05em;
+  }
+}
+
+.text-section-title {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.35;
+  color: var(--on-surface);
+}
+
+.text-body {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22px;
+  color: var(--on-surface);
+}
+
+.text-caption {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--on-surface-variant);
+}
+
+.text-metric {
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  color: var(--on-surface);
+}
+
+.text-metric-lg {
+  font-weight: 700;
+  font-size: 48px;
+  letter-spacing: -2px;
+  line-height: 1.1;
+  color: var(--on-surface);
+}
+
+.text-overline {
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+}
+
+.text-kicker {
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--primary);
+}
+
+.shadow-card-sm {
+  box-shadow: var(--shadow-sm);
+}
+
+.shadow-card-md {
+  box-shadow: var(--shadow-md);
+}

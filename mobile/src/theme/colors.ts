@@ -1,0 +1,43 @@
+export const colors = {
+  background: '#F5F6F8',
+  surface: '#FFFFFF',
+  surfaceContainerLow: '#FFFFFF',
+  surfaceContainer: '#FFFFFF',
+  surfaceContainerHigh: '#F9FAFB',
+  surfaceContainerHighest: '#EEF1F5',
+  onSurface: '#1C2130',
+  onSurfaceVariant: '#6B7280',
+  primary: '#4F6BED',
+  onPrimary: '#FFFFFF',
+  primaryContainer: '#EEF1FD',
+  onPrimaryContainer: '#4F6BED',
+  secondary: '#C98A1A',
+  warning: '#C98A1A',
+  warningContainer: '#FEF7EC',
+  error: '#E5484D',
+  errorContainer: '#FEF2F2',
+  onError: '#FFFFFF',
+  onErrorContainer: '#B42318',
+  outline: '#D8DCE5',
+  outlineVariant: '#E8EBF0',
+  success: '#0D9F6E',
+  successContainer: '#ECFDF5',
+  shadow: '#1C2130',
+} as const;
+
+export const shadows = {
+  sm: {
+    shadowColor: colors.shadow,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    elevation: 3,
+  },
+  md: {
+    shadowColor: colors.shadow,
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.1,
+    shadowRadius: 20,
+    elevation: 8,
+  },
+} as const;
