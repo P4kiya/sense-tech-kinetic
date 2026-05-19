@@ -52,3 +52,24 @@ The marketing site and admin UI live in [`web/`](web/). From repo root: `npm run
 - **`/`** — Vitrine (landing)
 - **`/admin`** — Admin console (sidebar: overview, sensors, alerts, devices, reports, settings)
 - Old **`/dashboard`** URLs redirect to **`/admin`**
+
+## Prototype alertes web → iPhone (Expo Go)
+
+Sur **iPhone**, Expo Go peut afficher des **notifications locales** (pas besoin de build ni de compte Apple Push). L’app interroge l’admin web toutes les ~3 s.
+
+1. **Même réseau Wi‑Fi** pour le PC et l’iPhone.
+2. **Web** (écoute sur le LAN) :
+   ```bash
+   npm install --prefix web
+   npm run web
+   ```
+3. **Adresse IP du PC** (ex. `192.168.1.42` via `ipconfig` sur Windows).
+4. **Mobile** — copier `mobile/.env.example` vers `mobile/.env` et définir :
+   ```
+   EXPO_PUBLIC_API_URL=http://192.168.1.42:3000
+   ```
+5. Redémarrer Expo (`npm start`), ouvrir **Expo Go** sur l’iPhone, accepter les **notifications** à la première ouverture.
+6. Sur le PC : [http://localhost:3000/admin](http://localhost:3000/admin) → **Panneau d’alerte démo** → **Déclencher une alerte**.
+7. Sur l’iPhone : notification + modal si l’alerte est **CRITIQUE** (Réglages → *Notifications push* doit rester activé).
+
+Si rien n’arrive : pare-feu Windows (autoriser le port **3000**), vérifier l’IP, redémarrer `npm start` après modification de `.env`.

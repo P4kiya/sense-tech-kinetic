@@ -4,13 +4,17 @@ import { colors, shadows } from '../theme/colors';
 import { radius } from '../theme/radius';
 import { typography } from '../theme/typography';
 import { ScalePressable } from '../components/ui/ScalePressable';
+import type { BridgeAlert } from '../lib/alert-bridge';
 
 interface CriticalAlertModalProps {
   visible: boolean;
   onClose: () => void;
+  alert?: BridgeAlert | null;
 }
 
-export function CriticalAlertModal({ visible, onClose }: CriticalAlertModalProps) {
+export function CriticalAlertModal({ visible, onClose, alert }: CriticalAlertModalProps) {
+  const location = alert?.location ?? 'Cuisine du personnel';
+  const sensorName = alert?.sensorName ?? 'CO-Zone';
   return (
     <Modal visible={visible} animationType="fade" transparent statusBarTranslucent>
       <View style={styles.overlay}>
@@ -23,8 +27,8 @@ export function CriticalAlertModal({ visible, onClose }: CriticalAlertModalProps
 
           <View style={styles.details}>
             <DetailRow label="Type de gaz" value="CO (monoxyde de carbone)" />
-            <DetailRow label="Mesure" value="450 ppm" highlight />
-            <DetailRow label="Emplacement" value="Cuisine du personnel" last />
+            <DetailRow label="Capteur" value={sensorName} />
+            <DetailRow label="Emplacement" value={location} last />
           </View>
 
           <View style={styles.actions}>

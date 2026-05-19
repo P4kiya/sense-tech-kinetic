@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts, Inter_400Regular, Inter_500Medium, Inter_600SemiBold, Inter_700Bold } from '@expo-google-fonts/inter';
@@ -11,6 +11,9 @@ import { DashboardScreen } from './src/screens/DashboardScreen';
 import { AlertsScreen } from './src/screens/AlertsScreen';
 import { SettingsScreen } from './src/screens/SettingsScreen';
 import { CriticalAlertModal } from './src/screens/CriticalAlertModal';
+import { AlertBridgeProvider, useAlertBridgeSettings } from './src/context/AlertBridgeContext';
+import { useWebAlertBridge } from './src/hooks/useWebAlertBridge';
+import type { BridgeAlert } from './src/lib/alert-bridge';
 import { colors } from './src/theme/colors';
 import { TOP_BAR_HEIGHT } from './src/theme/layout';
 
@@ -64,12 +67,17 @@ function MainTabs() {
 
 function AppShell() {
   const insets = useSafeAreaInsets();
+  const { pushEnabled, hasApiUrl } = useAlertBridgeSettings();
+  const [criticalAlert, setCriticalAlert] = useState<BridgeAlert | null>(null);
   const [showCriticalAlert, setShowCriticalAlert] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setShowCriticalAlert(true), 5000);
-    return () => clearTimeout(timer);
-  }, []);
+  useWebAlertBridge({
+    enabled: pushEnabled && hasApiUrl,
+    onCriticalAlert: (alert) => {
+      setCriticalAlert(alert);
+      setShowCriticalAlert(true);
+    },
+  });
 
   return (
     <View style={styles.root}>
@@ -78,7 +86,11 @@ function AppShell() {
       <View style={[styles.main, { paddingTop: insets.top + TOP_BAR_HEIGHT }]}>
         <MainTabs />
       </View>
-      <CriticalAlertModal visible={showCriticalAlert} onClose={() => setShowCriticalAlert(false)} />
+      <CriticalAlertModal
+        visible={showCriticalAlert}
+        alert={criticalAlert}
+        onClose={() => setShowCriticalAlert(false)}
+      />
     </View>
   );
 }
@@ -101,9 +113,11 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <NavigationContainer theme={navTheme}>
-        <AppShell />
-      </NavigationContainer>
+      <AlertBridgeProvider>
+        <NavigationContainer theme={navTheme}>
+          <AppShell />
+        </NavigationContainer>
+      </AlertBridgeProvider>
     </SafeAreaProvider>
   );
 }

@@ -2,14 +2,9 @@
 
 ## Summary
 
-This project has **no HTTP API layer**. There are:
+**Mobile:** No HTTP API layer — no `fetch` to backend URLs; mock data in screen/component files.
 
-- No `fetch` / `axios` / API client modules
-- No route handlers, Edge functions, or server directory
-- No OpenAPI/Swagger specs
-- No authentication headers or token storage
-
-All data is **static mock data** defined in:
+**Web:** One demo route handler only; admin/vitrine data from `web/lib/mock-data.ts`.
 
 | Location | Data |
 |----------|------|
@@ -18,6 +13,8 @@ All data is **static mock data** defined in:
 | `mobile/src/screens/DashboardScreen.tsx` | Inline props to `Gauge` / `StatCard` |
 | `mobile/src/screens/SettingsScreen.tsx` | Profile, toggles, sliders, hardware cards |
 | `mobile/src/screens/CriticalAlertModal.tsx` | Hardcoded CO 450 ppm demo copy |
+| `web/lib/mock-data.ts` | `sensors`, `recentAlerts`, `dashboardStats`, `alertTypes` |
+| `web/app/admin/devices/page.tsx` | Local `devices` array (gateways) |
 
 ---
 
@@ -25,9 +22,13 @@ All data is **static mock data** defined in:
 
 | Method | Path | Auth | Request | Response | Errors |
 |--------|------|------|---------|----------|--------|
-| — | — | — | — | — | — |
+| `POST` | `/api/alerts` | None | JSON: `{ sensorId, sensorName?, alertType, triggeredAt }` | `200` `{ ok: true, message: string, received: body }` | Standard Next parse errors |
 
-**N/A** — nothing to document until a backend is integrated.
+**Implementation:** `web/app/api/alerts/route.ts` — logs body with `console.log`, no database. French `message`: « Alerte enregistrée (démo — sans persistance) ».
+
+**Client:** `web/components/dashboard/FakeAlertPanel.tsx` (`fetch` on trigger).
+
+All other routes are static React Server/Client pages — no REST surface.
 
 ---
 
@@ -35,9 +36,10 @@ All data is **static mock data** defined in:
 
 When adding an API, prefer:
 
-1. `mobile/src/lib/api.ts` or `mobile/src/services/` for client + types
-2. Environment keys via Expo (`EXPO_PUBLIC_*`) in `.env` (gitignored locally)
-3. French error strings mapped from server codes in the UI layer
-4. Replace mock arrays in screens with hooks (`useQuery` / custom `useEffect` + state)
+1. **Mobile:** `mobile/src/lib/api.ts` or `mobile/src/services/` for client + types
+2. **Web:** `web/lib/api.ts` or Route Handlers under `web/app/api/`
+3. Environment keys via Expo (`EXPO_PUBLIC_*`) or Next (`NEXT_PUBLIC_*`) in `.env` (gitignored locally)
+4. French error strings mapped from server codes in the UI layer
+5. Replace mock arrays with hooks / server actions when wired
 
 Do not invent placeholder endpoints in this file; update with real method/path/shape when code exists.

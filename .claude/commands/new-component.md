@@ -7,6 +7,9 @@
 | Primitive (press, card) | `mobile/src/components/ui/` | `ScalePressable.tsx` |
 | Layout chrome | `mobile/src/components/layout/` | `TopBar.tsx` |
 | Domain widget | `mobile/src/components/<domain>/` | `mobile/src/components/alerts/AlertCard.tsx` |
+| Web UI primitive | `web/components/ui/` | `Select.tsx` |
+| Web landing section | `web/components/landing/` | `Packs.tsx` |
+| Web admin widget | `web/components/dashboard/` | `SensorCard.tsx` |
 
 Use **PascalCase** filename matching the export: `MyWidget.tsx` → `export function MyWidget`.
 

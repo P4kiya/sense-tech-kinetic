@@ -4,8 +4,9 @@ Follow this checklist when adding a user-facing feature to SENSE-TECH Kinetic.
 
 ## 1. Confirm scope
 
-- Mobile-only (Expo RN). No web-only or backend unless explicitly requested.
-- All new copy in **French**.
+- Confirm target: **mobile** (Expo), **web** (Next.js vitrine/admin), or both.
+- No backend unless explicitly requested.
+- All new copy in **French** (mobile and web).
 - Use existing theme tokens; read `.claude/context/design-system.md` before adding colors or spacing.
 
 ## 2. Choose where code lives
@@ -30,6 +31,15 @@ mobile/
 | New section on existing screen | Extend screen file or extract component under `mobile/src/components/<domain>/` |
 | Global overlay / modal | `mobile/src/screens/` or `mobile/src/components/` + state in `mobile/App.tsx` or parent screen |
 | Shared primitive | `mobile/src/components/ui/` |
+
+### Web (`web/`)
+
+| Feature type | Location |
+|--------------|----------|
+| New vitrine section | `web/components/landing/` + compose in `web/app/page.tsx` |
+| New admin page | `web/app/admin/<segment>/page.tsx` + entry in `web/lib/admin-nav.ts` |
+| Admin shared widget | `web/components/dashboard/` |
+| API route | `web/app/api/<name>/route.ts` |
 
 ## 3. Wire navigation (if needed)
 

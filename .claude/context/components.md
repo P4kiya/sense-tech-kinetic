@@ -205,3 +205,41 @@ triggerHaptic('selection');
 - UI primitives: `from '../ui/ScalePressable'`
 - Icons: `from 'lucide-react-native'`
 - Named exports only (no default exports in components)
+
+---
+
+## Web components (`web/`)
+
+Paths relative to `web/`. Use `@/` imports in app code.
+
+### UI primitives — `web/components/ui/`
+
+| Component | File | Notes |
+|-----------|------|--------|
+| `Button` | `Button.tsx` | `primary` \| `secondary` \| `ghost`; optional `href` → Next `Link` |
+| `Card` | `Card.tsx` | `elevated`, `staticSurface`, `padding`, `overflow`; hover lift + shadow unless `staticSurface` |
+| `Select` | `Select.tsx` | Wraps native `<select>` with `.select-field` + chevron |
+| `BrandLogo` | `BrandLogo.tsx` | `variant="landing"` for vitrine lockup |
+| `StatusBadge` | `StatusBadge.tsx` | `NORMAL` \| `WARNING` \| `DANGER` — French labels via `admin-i18n` |
+| `Reveal` / `RevealStagger` | `Reveal.tsx` | Framer Motion scroll reveals |
+
+### Landing — `web/components/landing/`
+
+`Navbar`, `Hero`, `Features`, `UseCases`, `Packs`, `HowItWorks`, `Faq`, `CtaBand`, `Footer`, `StatsStrip`, `ScrollProgress`, `SensorMockup`. Composed in `web/app/page.tsx`.
+
+### Admin — `web/components/dashboard/`
+
+| Component | Role |
+|-----------|------|
+| `DashboardFrame` | Shell: top bar, sidebar, scrollable `main` |
+| `DashboardSidebar` | Nav from `adminNavItems`; link « Retour au site » |
+| `DashboardTopBar` | Brand, menu toggle (mobile), user chip |
+| `AdminPageHeader` | Page `title` + `description` |
+| `StatsRow`, `SensorCard`, `RecentAlertsTable`, `FakeAlertPanel` | Overview widgets |
+
+### Web conventions
+
+- French user-visible strings
+- `cn()` from `web/lib/cn.ts` for class merging
+- Client components: `"use client"` when using hooks, Framer Motion, or `fetch`
+- Prefer theme classes over hardcoded purple; primary buttons use charcoal `#1D1D1F`

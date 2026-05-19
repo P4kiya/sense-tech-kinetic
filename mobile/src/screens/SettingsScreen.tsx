@@ -25,8 +25,10 @@ import { typography } from '../theme/typography';
 import { Card } from '../components/ui/Card';
 import { ScalePressable } from '../components/ui/ScalePressable';
 import { triggerHaptic } from '../lib/haptics';
+import { useAlertBridgeSettings } from '../context/AlertBridgeContext';
 
 export function SettingsScreen() {
+  const { pushEnabled, setPushEnabled, hasApiUrl } = useAlertBridgeSettings();
   return (
     <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
       <Text style={styles.pageTitle}>Paramètres</Text>
@@ -55,8 +57,13 @@ export function SettingsScreen() {
           <ToggleRow
             icon={Smartphone}
             title="Notifications push"
-            desc="Alertes instantanées sur l’appareil"
-            defaultOn
+            desc={
+              hasApiUrl
+                ? 'Alertes démo depuis l’admin web (son + bannière)'
+                : 'Définir EXPO_PUBLIC_API_URL dans mobile/.env'
+            }
+            value={pushEnabled}
+            onValueChange={setPushEnabled}
           />
           <ToggleRow icon={Mail} title="Rapports par e-mail" desc="Synthèses quotidiennes" />
           <ToggleRow
@@ -149,13 +156,28 @@ function ToggleRow({
   title,
   desc,
   defaultOn = false,
+  value,
+  onValueChange,
 }: {
   icon: LucideIcon;
   title: string;
   desc: string;
   defaultOn?: boolean;
+  value?: boolean;
+  onValueChange?: (next: boolean) => void;
 }) {
-  const [on, setOn] = useState(defaultOn);
+  const [internalOn, setInternalOn] = useState(defaultOn);
+  const on = value ?? internalOn;
+
+  const handleChange = (next: boolean) => {
+    triggerHaptic('selection');
+    if (onValueChange) {
+      onValueChange(next);
+    } else {
+      setInternalOn(next);
+    }
+  };
+
   return (
     <View style={styles.toggleRow}>
       <View style={styles.toggleLeft}>
@@ -169,10 +191,7 @@ function ToggleRow({
       </View>
       <Switch
         value={on}
-        onValueChange={(v) => {
-          triggerHaptic('selection');
-          setOn(v);
-        }}
+        onValueChange={handleChange}
         trackColor={{ false: colors.surfaceContainerHighest, true: colors.primaryContainer }}
         thumbColor={on ? colors.primary : colors.surface}
         ios_backgroundColor={colors.surfaceContainerHighest}

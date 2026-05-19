@@ -2,8 +2,8 @@
 
 ## Why `mobile/` at repo root
 
-- Keeps room for future packages (API, web admin) alongside the Expo app
-- Root `package.json` proxies `npm start` / `lint` into `mobile/`
+- Keeps Expo app isolated; root `package.json` proxies `npm start` / `lint` into `mobile/`
+- **`web/`** sits alongside for Next.js vitrine + admin (see below)
 
 ## Why Expo / React Native
 
@@ -62,9 +62,15 @@
 - Native slider feel on iOS/Android for settings screen
 - Themed with `minimumTrackTintColor` / `thumbTintColor` per threshold severity
 
-## Removed / rejected approaches
+## Why Next.js web (`web/`)
 
-- **Vite web app** — removed; mobile-only product (`README` reflects Expo-only)
+- Marketing **vitrine** and **admin prototype** in the browser without shipping RN Web
+- App Router, Tailwind v4, and Framer Motion for scroll animations on landing
+- Admin under `/admin` with sidebar layout; `/dashboard/*` redirects for old URLs
+- French UI on vitrine and admin; mock data shared via `web/lib/mock-data.ts`
+- Web design tokens intentionally **neutral/Apple-inspired** (charcoal primary), separate from mobile blue `#4F6BED`
+
+## Removed / rejected approaches
 - **Default React Navigation tab bar** — replaced by `CustomTabBar` (avoided blue fill / cramped labels)
 - **Visible tab text labels** — icon-only bar; labels kept for accessibility only
 - **Dark mode** — explicitly out of scope; `userInterfaceStyle: light`

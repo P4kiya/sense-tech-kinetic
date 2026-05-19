@@ -1,6 +1,8 @@
 # Design System — SENSE-TECH Kinetic
 
-This app uses **React Native `StyleSheet` and TypeScript theme modules**, not CSS. There are **no CSS variables**, **no `@keyframes`**, and **no responsive CSS breakpoints**. Layout adapts via flexbox, safe-area insets, and fixed token scales.
+**Mobile** uses React Native `StyleSheet` and TypeScript theme modules (below). **Web** uses CSS variables in `web/app/globals.css` and Tailwind v4 — see [Web design tokens](#web-design-tokens-webappglobalscss) at the end of this file.
+
+Mobile: **no CSS variables**, **no `@keyframes`**, **no responsive CSS breakpoints**. Layout adapts via flexbox, safe-area insets, and fixed token scales.
 
 ---
 
@@ -217,3 +219,29 @@ dark: false
 - Splash / adaptive icon background: `#F5F6F8`
 - `userInterfaceStyle`: `light`
 - `StatusBar`: `style="dark"`
+
+---
+
+## Web design tokens (`web/app/globals.css`)
+
+Tailwind theme via `@theme inline` with literal hex (not linked to mobile `colors.ts`).
+
+| Token / class | Value | Usage |
+|---------------|-------|--------|
+| `--background` / `bg-background` | `#FBFBFD` | Page background |
+| `--surface` | `#FFFFFF` | Cards, inputs |
+| `--primary` | `#1D1D1F` | Primary buttons, dark CTA band |
+| `--accent` | `#0071E3` | Link hovers (use sparingly) |
+| `--on-surface` | `#1D1D1F` | Body text |
+| `--on-surface-variant` | `#6E6E73` | Secondary text |
+| `--outline` / `--outline-variant` | `#D2D2D7` / `#E8E8ED` | Borders |
+| `.text-page-title`, `.text-lead-title`, etc. | — | Typography presets (Inter via `layout.tsx`) |
+| `.badge-kicker` | — | Section label pills on landing |
+| `.select-field` | — | Styled native `<select>` (chevron via `Select.tsx`) |
+| `.shadow-card-sm` / `-md` / `-lg` | layered rgba shadows | Cards; hover uses `-lg` |
+
+**Motion:** Framer Motion in `web/components/ui/Reveal.tsx`, `web/lib/motion.ts`; `prefers-reduced-motion` respected. Landing `ScrollProgress` bar.
+
+**Scrollbar:** `html` scrollbar hidden globally; admin main pane uses `overflow-y-auto`.
+
+**Do not** use mobile primary `#4F6BED` on web unless explicitly re-theming.

@@ -11,12 +11,14 @@ export function FakeAlertPanel() {
   const [sensorId, setSensorId] = useState(sensors[0]?.id ?? "");
   const [alertType, setAlertType] = useState<AlertTypeValue>("CRITICAL");
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<string | null>(null);
 
   async function handleTrigger() {
     const sensor = sensors.find((s) => s.id === sensorId);
     const payload = {
       sensorId,
       sensorName: sensor?.name,
+      location: sensor?.location,
       alertType,
       triggeredAt: new Date().toISOString(),
     };
@@ -32,8 +34,14 @@ export function FakeAlertPanel() {
       });
       const data = await res.json();
       console.log("[FakeAlertPanel] Réponse API :", data);
+      if (data.ok) {
+        setStatus("Alerte transmise — l’app mobile affichera une notification si elle est connectée.");
+      } else {
+        setStatus("Échec de l’envoi.");
+      }
     } catch (err) {
       console.error("[FakeAlertPanel] Échec de la requête :", err);
+      setStatus("Erreur réseau — vérifiez que le serveur web tourne.");
     } finally {
       setLoading(false);
     }
@@ -48,7 +56,7 @@ export function FakeAlertPanel() {
         <div>
           <h2 className="text-section-title font-semibold tracking-tight">Panneau d&apos;alerte démo</h2>
           <p className="text-caption mt-0.5 leading-relaxed">
-            Simuler une alerte pour les tests
+            Envoie une alerte vers l&apos;app mobile (prototype via API)
           </p>
         </div>
       </div>
@@ -86,6 +94,9 @@ export function FakeAlertPanel() {
         >
           {loading ? "Déclenchement…" : "Déclencher l'alerte"}
         </Button>
+        {status ? (
+          <p className="text-caption leading-relaxed text-on-surface-variant">{status}</p>
+        ) : null}
       </div>
     </Card>
   );

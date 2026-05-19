@@ -2,7 +2,7 @@
 
 ## Summary
 
-**No database.** The app does not use SQLite, AsyncStorage persistence, Realm, Supabase, Firebase, or any ORM.
+**No database.** Neither the mobile app nor the web app uses SQLite, AsyncStorage persistence, Realm, Supabase, Firebase, or any ORM. `POST /api/alerts` does not persist data.
 
 - No schema migrations
 - No tables or collections
