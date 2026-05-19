@@ -73,6 +73,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 /* Subtle hero wash — keeps tokens, adds depth */
 .hero-glow {
   background-image: radial-gradient(

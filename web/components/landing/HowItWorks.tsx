@@ -1,52 +1,80 @@
+import { Bell, Radio, SlidersHorizontal } from "lucide-react";
+import { Card } from "@/components/ui/Card";
+import { Reveal, RevealItem, RevealStagger } from "@/components/ui/Reveal";
+
 const steps = [
   {
-    step: "01",
-    title: "Deploy sensors",
+    icon: Radio,
+    title: "Déployer les capteurs",
     description:
-      "Mount Kinetic units across zones. They auto-join your network and appear in the dashboard within minutes.",
+      "Installez les unités Kinetic par zone. Elles rejoignent le réseau et apparaissent dans la console admin en quelques minutes.",
   },
   {
-    step: "02",
-    title: "Set thresholds",
+    icon: SlidersHorizontal,
+    title: "Définir les seuils",
     description:
-      "Configure PPM warning and critical levels per zone. Policies sync to every device in the fleet.",
+      "Configurez les niveaux PPM d'avertissement et critique par zone. Les politiques se synchronisent sur tout le parc.",
   },
   {
-    step: "03",
-    title: "Monitor & respond",
+    icon: Bell,
+    title: "Surveiller et réagir",
     description:
-      "Watch live readings, receive instant alerts, and resolve incidents with a full audit trail.",
+      "Suivez les mesures en direct, recevez les alertes et clôturez les incidents avec une piste d'audit complète.",
   },
 ];
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="scroll-mt-24 py-20 md:py-24">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="mb-14 max-w-lg">
-          <p className="text-overline mb-3">How it works</p>
-          <h2 className="text-lead-title text-balance">
-            Up and running in three steps
+    <section
+      id="how-it-works"
+      className="relative scroll-mt-24 border-t border-outline-variant/25 bg-background py-20 md:py-28"
+    >
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-surface/80 to-transparent"
+        aria-hidden
+      />
+
+      <div className="relative mx-auto max-w-6xl px-6 sm:px-8">
+        <Reveal direction="up" distance={32} className="mx-auto mb-14 max-w-2xl text-center md:mb-16">
+          <span className="text-kicker mb-4 inline-block rounded-full bg-surface px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] shadow-sm ring-1 ring-outline-variant/50">
+            Comment ça marche
+          </span>
+          <h2 className="text-lead-title mb-4 text-balance">
+            Opérationnel en trois étapes
           </h2>
+          <p className="text-[15px] leading-relaxed text-on-surface-variant">
+            De l&apos;installation aux tableaux de bord en direct — un parcours simple pour vos équipes dès le
+            premier jour.
+          </p>
+        </Reveal>
+
+        <div className="relative">
+          <div
+            className="pointer-events-none absolute left-[10%] right-[10%] top-10 z-0 hidden h-px bg-gradient-to-r from-transparent via-outline-variant to-transparent sm:block md:left-[14%] md:right-[14%]"
+            aria-hidden
+          />
+
+          <RevealStagger className="relative z-10 grid gap-5 sm:grid-cols-3 sm:gap-6">
+            {steps.map((item, i) => (
+              <RevealItem key={item.title} className="min-w-0">
+                <Card className="relative h-full rounded-2xl border-outline-variant/45 !p-7 text-center shadow-card-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/15 hover:shadow-card-md sm:text-left">
+                  <div className="mx-auto mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-primary text-[13px] font-bold tabular-nums text-on-primary shadow-md shadow-primary/25 sm:mx-0">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <div className="mx-auto mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-outline-variant/50 bg-surface text-primary sm:mx-0">
+                    <item.icon className="h-5 w-5" strokeWidth={2} />
+                  </div>
+                  <h3 className="text-section-title mb-2.5 text-[16px] font-semibold tracking-tight">
+                    {item.title}
+                  </h3>
+                  <p className="text-[15px] leading-relaxed text-on-surface-variant">
+                    {item.description}
+                  </p>
+                </Card>
+              </RevealItem>
+            ))}
+          </RevealStagger>
         </div>
-        <ol className="grid gap-4 md:grid-cols-3 md:gap-5">
-          {steps.map((item, i) => (
-            <li
-              key={item.step}
-              className="relative rounded-lg border border-outline-variant/40 bg-surface/80 p-6 shadow-card-sm backdrop-blur-sm transition-all duration-300 hover:border-outline-variant hover:shadow-card-md"
-            >
-              <span className="text-caption mb-4 block font-semibold tabular-nums text-primary/80">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <h3 className="text-section-title mb-2 font-semibold tracking-tight">
-                {item.title}
-              </h3>
-              <p className="text-[15px] leading-relaxed text-on-surface-variant">
-                {item.description}
-              </p>
-            </li>
-          ))}
-        </ol>
       </div>
     </section>
   );

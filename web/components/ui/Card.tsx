@@ -7,6 +7,8 @@ interface CardProps {
   padding?: boolean;
   /** Disable hover lift (e.g. dense data tables) */
   staticSurface?: boolean;
+  /** Default clips children to rounded corners; use `visible` only when needed */
+  overflow?: "hidden" | "visible";
 }
 
 export function Card({
@@ -15,11 +17,13 @@ export function Card({
   elevated = false,
   padding = true,
   staticSurface = false,
+  overflow = "hidden",
 }: CardProps) {
   return (
     <div
       className={cn(
-        "rounded-lg border border-outline-variant/50 bg-surface overflow-hidden transition-[box-shadow,border-color] duration-300",
+        "rounded-lg border border-outline-variant/50 bg-surface transition-[box-shadow,border-color] duration-300",
+        overflow === "hidden" ? "overflow-hidden" : "overflow-visible",
         elevated ? "shadow-card-md" : "shadow-card-sm",
         !staticSurface &&
           (elevated

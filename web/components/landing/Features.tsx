@@ -1,24 +1,25 @@
-import { BarChart3, BellRing, Radio } from "lucide-react";
+import { BarChart3, BellRing, Cpu, Radio } from "lucide-react";
 import { Card } from "@/components/ui/Card";
+import { Reveal, RevealItem, RevealStagger } from "@/components/ui/Reveal";
 
 const features = [
   {
     icon: Radio,
-    title: "Real-time monitoring",
+    title: "Surveillance en temps réel",
     description:
-      "Live PPM readings, battery health, and connectivity status from every sensor in your fleet.",
+      "Lecture PPM en direct, état des batteries et connectivité pour chaque capteur de votre parc.",
   },
   {
     icon: BellRing,
-    title: "Instant alerts",
+    title: "Alertes instantanées",
     description:
-      "Critical, warning, and info notifications pushed the moment thresholds are crossed.",
+      "Notifications critique, avertissement et information dès qu'un seuil est franchi.",
   },
   {
     icon: BarChart3,
-    title: "Historical data",
+    title: "Données historiques",
     description:
-      "24-hour trends and export-ready logs to support audits, compliance, and root-cause analysis.",
+      "Tendances sur 24 h et journaux exportables pour audits, conformité et analyse des causes.",
   },
 ];
 
@@ -26,34 +27,57 @@ export function Features() {
   return (
     <section
       id="features"
-      className="scroll-mt-24 rounded-t-[2rem] bg-surface py-20 shadow-[0_-1px_0_rgba(232,235,240,0.9)] md:py-24"
+      className="relative scroll-mt-24 rounded-t-[2rem] border-t border-outline-variant/30 bg-surface pb-20 pt-16 shadow-[0_-8px_32px_rgba(28,33,48,0.04)] md:pb-28 md:pt-20"
     >
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="mb-14 max-w-lg">
-          <p className="text-overline mb-3 text-on-surface-variant">Features</p>
-          <h2 className="text-lead-title mb-4 text-balance">
-            Built for industrial operators
-          </h2>
-          <p className="text-[15px] leading-relaxed text-on-surface-variant">
-            Everything you need to monitor gas levels and respond fast — in one
-            unified platform.
-          </p>
-        </div>
-        <div className="grid gap-4 md:grid-cols-3 md:gap-5">
-          {features.map((feature) => (
-            <Card key={feature.title} className="group border-outline-variant/40 !p-6">
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-container/70 transition-colors group-hover:bg-primary-container">
-                <feature.icon className="h-5 w-5 text-primary" strokeWidth={2} />
-              </div>
-              <h3 className="text-section-title mb-2 font-semibold tracking-tight">
-                {feature.title}
-              </h3>
-              <p className="text-[15px] leading-relaxed text-on-surface-variant">
-                {feature.description}
-              </p>
-            </Card>
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_-10%,rgba(79,107,237,0.07),transparent_55%)]"
+        aria-hidden
+      />
+
+      <div className="relative mx-auto max-w-6xl px-6 sm:px-8">
+        <Reveal direction="up" distance={36} className="mb-14 md:mb-16">
+          <div className="max-w-xl">
+            <span className="text-kicker mb-4 inline-flex items-center gap-2 rounded-full bg-primary-container/80 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] ring-1 ring-primary/10">
+              <Cpu className="h-3.5 w-3.5 text-primary" strokeWidth={2.5} aria-hidden />
+              Fonctionnalités
+            </span>
+            <h2 className="text-lead-title mb-4 text-balance">
+              Conçu pour les opérateurs industriels
+            </h2>
+            <p className="text-[15px] leading-relaxed text-on-surface-variant">
+              Tout ce qu'il faut pour suivre les niveaux de gaz et réagir vite — au sein d'une
+              plateforme unifiée.
+            </p>
+          </div>
+        </Reveal>
+
+        <RevealStagger className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+          {features.map((feature, index) => (
+            <RevealItem key={feature.title} className="min-w-0">
+              <Card className="group relative h-full rounded-2xl border-outline-variant/45 !p-7 transition-shadow duration-300 hover:border-primary/20 hover:shadow-card-md">
+                <span
+                  className="text-caption mb-5 flex h-7 w-7 items-center justify-center rounded-lg bg-surface-container-highest font-bold tabular-nums text-on-surface-variant transition-colors group-hover:bg-primary-container group-hover:text-primary"
+                  aria-hidden
+                >
+                  {index + 1}
+                </span>
+                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-container to-primary-container/40 ring-1 ring-primary/15 transition-transform duration-300 group-hover:scale-[1.03]">
+                  <feature.icon className="h-5 w-5 text-primary" strokeWidth={2} />
+                </div>
+                <h3 className="text-section-title mb-2.5 text-[16px] font-semibold tracking-tight">
+                  {feature.title}
+                </h3>
+                <p className="text-[15px] leading-relaxed text-on-surface-variant">
+                  {feature.description}
+                </p>
+              </Card>
+            </RevealItem>
           ))}
-        </div>
+        </RevealStagger>
       </div>
     </section>
   );

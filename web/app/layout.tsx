@@ -11,7 +11,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "SENSE-TECH Kinetic",
   description:
-    "Industrial gas and environmental safety monitoring — real-time sensors, instant alerts, historical data.",
+    "Surveillance des gaz industriels et de l'environnement — capteurs en temps réel, alertes instantanées, données historiques.",
 };
 
 export default function RootLayout({
@@ -21,8 +21,8 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-      className={`${inter.variable} h-full antialiased`}
+      lang="fr"
+      className={`${inter.variable} h-full scroll-smooth antialiased`}
       style={{ colorScheme: "light" }}
     >
       <body className="min-h-full flex flex-col font-sans">{children}</body>

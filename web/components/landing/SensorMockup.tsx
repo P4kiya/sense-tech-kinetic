@@ -6,40 +6,49 @@ export function SensorMockup() {
     <Card
       elevated
       padding={false}
-      className="relative w-full max-w-sm overflow-visible border-outline-variant/35 !shadow-card-md"
+      className="relative w-full max-w-[300px] border-outline-variant/35 !shadow-card-md sm:max-w-[320px]"
     >
-      <div className="p-8">
-        <div className="mx-auto flex flex-col items-center">
-          <div className="relative mb-8">
-            <div className="h-44 w-32 rounded-2xl border border-outline-variant/50 bg-gradient-to-b from-surface-container-highest to-surface-container-highest/60 shadow-inner">
-              <div className="flex h-full flex-col items-center justify-between p-4">
-                <div className="flex w-full items-center justify-between">
-                  <span className="h-2 w-2 rounded-full bg-success shadow-sm shadow-success/30" aria-hidden />
-                  <Wifi className="h-4 w-4 text-primary" strokeWidth={2} />
-                </div>
-                <div className="text-center">
-                  <p className="text-overline text-primary/90">CO PPM</p>
-                  <p className="text-metric-lg text-primary">24</p>
-                </div>
-                <div className="flex w-full items-center justify-between text-caption">
-                  <span className="inline-flex items-center gap-1">
-                    <Battery className="h-3.5 w-3.5 opacity-70" />
-                    92%
-                  </span>
-                  <span className="inline-flex items-center gap-1 font-medium text-success">
-                    <Activity className="h-3.5 w-3.5" />
-                    Normal
-                  </span>
-                </div>
+      <div className="relative px-6 pb-7 pt-8 sm:px-8 sm:pb-8 sm:pt-10">
+        {/* Soft halo behind device — stays inside padding, no clipping */}
+        <div
+          className="pointer-events-none absolute left-1/2 top-[42%] h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.07] blur-2xl"
+          aria-hidden
+        />
+
+        <div className="relative mx-auto flex w-full max-w-[260px] flex-col items-center">
+          {/* Device + side rail in one silhouette (no negative positioning) */}
+          <div className="mb-6 flex overflow-hidden rounded-2xl border border-outline-variant/55 bg-surface shadow-inner ring-1 ring-black/[0.03]">
+            <div className="flex h-[11.5rem] w-[8.25rem] shrink-0 flex-col justify-between bg-gradient-to-b from-surface-container-highest via-surface-container-highest/90 to-surface-container-highest/70 p-3.5 sm:h-48 sm:w-[8.5rem] sm:p-4">
+              <div className="flex w-full items-center justify-between">
+                <span
+                  className="h-2 w-2 shrink-0 rounded-full bg-success shadow-sm ring-2 ring-success/25"
+                  aria-hidden
+                />
+                <Wifi className="h-4 w-4 text-primary" strokeWidth={2} />
+              </div>
+              <div className="flex flex-col items-center gap-0.5 py-1 text-center">
+                <p className="text-overline text-primary/90">CO PPM</p>
+                <p className="text-metric-lg text-primary tabular-nums tracking-tighter">24</p>
+              </div>
+              <div className="flex w-full items-end justify-between gap-1 text-caption">
+                <span className="inline-flex min-w-0 items-center gap-1 tabular-nums">
+                  <Battery className="h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden />
+                  <span className="truncate">92%</span>
+                </span>
+                <span className="inline-flex shrink-0 items-center gap-1 font-semibold text-success">
+                  <Activity className="h-3.5 w-3.5" aria-hidden />
+                  Normal
+                </span>
               </div>
             </div>
             <div
-              className="absolute -right-2 top-1/2 h-14 w-2.5 -translate-y-1/2 rounded-r-lg bg-primary shadow-sm shadow-primary/25"
+              className="w-2.5 shrink-0 bg-gradient-to-b from-primary via-primary to-primary/80 sm:w-3"
               aria-hidden
             />
           </div>
-          <p className="text-caption text-center text-on-surface-variant/90">
-            Kinetic Sensor Unit — demo
+
+          <p className="text-center text-[12px] font-medium leading-snug text-on-surface-variant sm:text-caption">
+            Unité capteur Kinetic — démo
           </p>
         </div>
       </div>
