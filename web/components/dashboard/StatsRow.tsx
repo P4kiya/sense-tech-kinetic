@@ -4,28 +4,28 @@ import { dashboardStats } from "@/lib/mock-data";
 
 const stats = [
   {
-    label: "Total Sensors",
+    label: "Capteurs au total",
     value: dashboardStats.totalSensors,
     icon: Cpu,
     iconBg: "bg-primary-container/80",
     iconColor: "text-primary",
   },
   {
-    label: "Active Alerts",
+    label: "Alertes actives",
     value: dashboardStats.activeAlerts,
     icon: AlertTriangle,
     iconBg: "bg-error-container/90",
     iconColor: "text-error",
   },
   {
-    label: "Online Sensors",
+    label: "Capteurs en ligne",
     value: dashboardStats.onlineSensors,
     icon: Wifi,
     iconBg: "bg-success-container/80",
     iconColor: "text-success",
   },
   {
-    label: "Resolved Today",
+    label: "Résolues aujourd'hui",
     value: dashboardStats.resolvedToday,
     icon: CheckCircle,
     iconBg: "bg-success-container/80",

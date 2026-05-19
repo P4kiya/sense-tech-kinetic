@@ -36,9 +36,7 @@ export function HowItWorks() {
 
       <div className="relative mx-auto max-w-6xl px-6 sm:px-8">
         <Reveal direction="up" distance={32} className="mx-auto mb-14 max-w-2xl text-center md:mb-16">
-          <span className="text-kicker mb-4 inline-block rounded-full bg-surface px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] shadow-sm ring-1 ring-outline-variant/50">
-            Comment ça marche
-          </span>
+          <span className="badge-kicker mb-4">Comment ça marche</span>
           <h2 className="text-lead-title mb-4 text-balance">
             Opérationnel en trois étapes
           </h2>
@@ -57,11 +55,11 @@ export function HowItWorks() {
           <RevealStagger className="relative z-10 grid gap-5 sm:grid-cols-3 sm:gap-6">
             {steps.map((item, i) => (
               <RevealItem key={item.title} className="min-w-0">
-                <Card className="relative h-full rounded-2xl border-outline-variant/45 !p-7 text-center shadow-card-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/15 hover:shadow-card-md sm:text-left">
-                  <div className="mx-auto mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-primary text-[13px] font-bold tabular-nums text-on-primary shadow-md shadow-primary/25 sm:mx-0">
+                <Card className="relative h-full rounded-2xl border-outline-variant/45 !p-7 text-center sm:text-left">
+                  <div className="mx-auto mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-primary text-[13px] font-bold tabular-nums text-on-primary sm:mx-0">
                     {String(i + 1).padStart(2, "0")}
                   </div>
-                  <div className="mx-auto mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-outline-variant/50 bg-surface text-primary sm:mx-0">
+                  <div className="mx-auto mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-outline-variant/50 bg-surface text-on-surface sm:mx-0">
                     <item.icon className="h-5 w-5" strokeWidth={2} />
                   </div>
                   <h3 className="text-section-title mb-2.5 text-[16px] font-semibold tracking-tight">

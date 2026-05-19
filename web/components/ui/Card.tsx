@@ -22,13 +22,11 @@ export function Card({
   return (
     <div
       className={cn(
-        "rounded-lg border border-outline-variant/50 bg-surface transition-[box-shadow,border-color] duration-300",
+        "rounded-lg border border-outline-variant/50 bg-surface",
         overflow === "hidden" ? "overflow-hidden" : "overflow-visible",
         elevated ? "shadow-card-md" : "shadow-card-sm",
         !staticSurface &&
-          (elevated
-            ? "hover:border-outline-variant"
-            : "hover:border-outline-variant hover:shadow-card-md"),
+          "transition-[box-shadow,border-color,transform] duration-300 ease-out motion-reduce:transition-none hover:-translate-y-1 hover:border-outline/80 hover:shadow-card-lg motion-reduce:hover:translate-y-0",
         padding && "p-5",
         className,
       )}

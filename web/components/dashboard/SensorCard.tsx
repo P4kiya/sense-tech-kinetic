@@ -22,14 +22,14 @@ export function SensorCard({ sensor }: SensorCardProps) {
       </div>
       <div className="grid grid-cols-2 gap-3 border-t border-outline-variant pt-3">
         <div>
-          <p className="text-overline mb-0.5">Gas level</p>
+          <p className="text-overline mb-0.5">Niveau gaz</p>
           <p className="text-metric">
             {sensor.gasLevelPpm}
             <span className="text-caption ml-1 font-medium">PPM</span>
           </p>
         </div>
         <div>
-          <p className="text-overline mb-0.5">Battery</p>
+          <p className="text-overline mb-0.5">Batterie</p>
           <p className="text-metric inline-flex items-center gap-1.5">
             <Battery className="h-5 w-5 text-primary" strokeWidth={2} />
             {sensor.batteryPercent}%

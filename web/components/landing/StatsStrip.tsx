@@ -17,7 +17,7 @@ export function StatsStrip() {
         <RevealStagger className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {stats.map((stat) => (
             <RevealItem key={stat.label} className="min-w-0 text-center sm:text-left">
-              <p className="text-metric-lg text-primary tabular-nums tracking-tight">{stat.value}</p>
+              <p className="text-metric-lg tabular-nums tracking-tight">{stat.value}</p>
               <p className="text-section-title mt-2 font-semibold tracking-tight">{stat.label}</p>
               <p className="text-caption mt-1 leading-relaxed">{stat.detail}</p>
             </RevealItem>

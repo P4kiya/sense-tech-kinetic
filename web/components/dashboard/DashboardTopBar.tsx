@@ -14,7 +14,7 @@ export function DashboardTopBar({
   mobileNavOpen = false,
 }: DashboardTopBarProps) {
   return (
-    <header className="sticky top-0 z-50 shrink-0 border-b border-outline-variant/40 bg-background/75 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60">
+    <header className="z-50 shrink-0 border-b border-outline-variant/40 bg-background/75 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60">
       <div className="flex h-14 w-full items-center justify-between gap-3 px-4 sm:px-6">
         <div className="flex min-w-0 items-center gap-2">
           {onMenuClick ? (
@@ -35,7 +35,7 @@ export function DashboardTopBar({
           <BrandLogo href="/admin" size="sm" />
         </div>
         <div className="flex items-center gap-2 sm:gap-3">
-          <span className="hidden text-caption sm:inline">Admin</span>
+          <span className="hidden text-caption sm:inline">Administration</span>
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-container/80 ring-1 ring-primary/10">
             <User className="h-4 w-4 text-primary" strokeWidth={2} />
           </div>
@@ -43,7 +43,7 @@ export function DashboardTopBar({
             <p className="text-section-title truncate text-sm font-semibold leading-tight tracking-tight">
               Marie Dupont
             </p>
-            <p className="text-caption">Facility Admin</p>
+            <p className="text-caption">Administrateur site</p>
           </div>
         </div>
       </div>

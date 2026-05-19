@@ -1,4 +1,5 @@
 import { cn } from "@/lib/cn";
+import { sensorStatusLabels } from "@/lib/admin-i18n";
 
 export type SensorStatus = "NORMAL" | "WARNING" | "DANGER";
 
@@ -40,7 +41,7 @@ export function StatusBadge({ status, className }: StatusBadgeProps) {
       )}
     >
       <span className={cn("h-1.5 w-1.5 shrink-0 rounded-full", s.dot)} aria-hidden />
-      {status}
+      {sensorStatusLabels[status]}
     </span>
   );
 }

@@ -14,7 +14,7 @@ export function Footer() {
   return (
     <footer className="relative border-t border-outline-variant/40 bg-background">
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-outline-variant/80"
         aria-hidden
       />
       <Reveal direction="up" distance={20} duration={0.45}>
@@ -33,7 +33,7 @@ export function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="inline-flex py-0.5 text-[14px] font-medium text-on-surface-variant transition-colors hover:text-primary"
+                      className="inline-flex py-0.5 text-[14px] font-medium text-on-surface-variant transition-colors hover:text-on-surface"
                     >
                       {link.label}
                     </Link>

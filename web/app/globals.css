@@ -1,27 +1,28 @@
 @import "tailwindcss";
 
-/* SENSE-TECH Kinetic design tokens — matches mobile/src/theme */
+/* Apple-inspired palette — neutral, minimal accent */
 :root {
-  --background: #f5f6f8;
+  --background: #fbfbfd;
   --surface: #ffffff;
-  --surface-container-highest: #eef1f5;
-  --primary: #4f6bed;
-  --primary-container: #eef1fd;
+  --surface-container-highest: #f5f5f7;
+  --primary: #1d1d1f;
+  --primary-container: #f5f5f7;
   --on-primary: #ffffff;
-  --on-surface: #1c2130;
-  --on-surface-variant: #6b7280;
-  --error: #e5484d;
-  --error-container: #fef2f2;
-  --on-error-container: #b42318;
-  --warning: #c98a1a;
-  --warning-container: #fef7ec;
-  --success: #0d9f6e;
-  --success-container: #ecfdf5;
-  --outline: #d8dce5;
-  --outline-variant: #e8ebf0;
-  /* Layered shadows — softer, modern float */
-  --shadow-sm: 0 1px 2px rgba(28, 33, 48, 0.04), 0 4px 14px rgba(28, 33, 48, 0.05);
-  --shadow-md: 0 4px 8px rgba(28, 33, 48, 0.04), 0 16px 40px rgba(28, 33, 48, 0.08);
+  --on-surface: #1d1d1f;
+  --on-surface-variant: #6e6e73;
+  --accent: #0071e3;
+  --error: #ff3b30;
+  --error-container: #fff5f5;
+  --on-error-container: #d70015;
+  --warning: #ff9500;
+  --warning-container: #fff9f0;
+  --success: #34c759;
+  --success-container: #f0fdf4;
+  --outline: #d2d2d7;
+  --outline-variant: #e8e8ed;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.03), 0 12px 32px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.02), 0 16px 40px rgba(0, 0, 0, 0.1);
   --radius-sm: 12px;
   --radius-md: 16px;
   --radius-lg: 20px;
@@ -34,25 +35,28 @@
   --spacing-tight: 8px;
 }
 
+/* Literal hex in @theme so Tailwind utilities never cache stale purple */
 @theme inline {
-  --color-background: var(--background);
-  --color-surface: var(--surface);
-  --color-surface-container-highest: var(--surface-container-highest);
-  --color-primary: var(--primary);
-  --color-primary-container: var(--primary-container);
-  --color-on-primary: var(--on-primary);
-  --color-on-surface: var(--on-surface);
-  --color-on-surface-variant: var(--on-surface-variant);
-  --color-error: var(--error);
-  --color-error-container: var(--error-container);
-  --color-on-error-container: var(--on-error-container);
-  --color-warning: var(--warning);
-  --color-warning-container: var(--warning-container);
-  --color-success: var(--success);
-  --color-success-container: var(--success-container);
-  --color-outline: var(--outline);
-  --color-outline-variant: var(--outline-variant);
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --color-background: #fbfbfd;
+  --color-surface: #ffffff;
+  --color-surface-container-highest: #f5f5f7;
+  --color-primary: #1d1d1f;
+  --color-primary-container: #f5f5f7;
+  --color-on-primary: #ffffff;
+  --color-on-surface: #1d1d1f;
+  --color-on-surface-variant: #6e6e73;
+  --color-accent: #0071e3;
+  --color-error: #ff3b30;
+  --color-error-container: #fff5f5;
+  --color-on-error-container: #d70015;
+  --color-warning: #ff9500;
+  --color-warning-container: #fff9f0;
+  --color-success: #34c759;
+  --color-success-container: #f0fdf4;
+  --color-outline: #d2d2d7;
+  --color-outline-variant: #e8e8ed;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    sans-serif;
   --radius-sm: var(--radius-sm);
   --radius-md: var(--radius-md);
   --radius-lg: var(--radius-lg);
@@ -62,10 +66,20 @@
   --shadow-md: var(--shadow-md);
 }
 
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   background: var(--background);
   color: var(--on-surface);
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    sans-serif;
   font-size: 15px;
   line-height: 22px;
   font-weight: 400;
@@ -79,16 +93,14 @@ body {
   }
 }
 
-/* Subtle hero wash — keeps tokens, adds depth */
 .hero-glow {
   background-image: radial-gradient(
     ellipse 85% 55% at 50% -15%,
-    color-mix(in srgb, var(--primary) 14%, transparent),
+    rgba(0, 0, 0, 0.04),
     transparent 58%
   );
 }
 
-/* Typography presets — mobile/src/theme/typography.ts */
 .text-brand {
   font-weight: 700;
   font-size: 16px;
@@ -174,8 +186,9 @@ body {
 .text-kicker {
   font-weight: 600;
   font-size: 12px;
-  letter-spacing: 0.02em;
-  color: var(--primary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
 }
 
 .shadow-card-sm {
@@ -184,4 +197,72 @@ body {
 
 .shadow-card-md {
   box-shadow: var(--shadow-md);
+}
+
+.shadow-card-lg {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Section label pill — shared across landing */
+.badge-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-full);
+  background: var(--surface-container-highest);
+  padding: 0.375rem 0.75rem;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  border: 1px solid var(--outline-variant);
+}
+
+/* Native select — Apple-style field */
+.select-field {
+  width: 100%;
+  min-height: 44px;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--outline);
+  background-color: var(--surface);
+  padding: 0.625rem 2.75rem 0.625rem 0.875rem;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--on-surface);
+  box-shadow: var(--shadow-sm);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.select-field:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--on-surface) 22%, var(--outline));
+  background-color: var(--surface-container-highest);
+}
+
+.select-field:focus {
+  outline: none;
+  border-color: color-mix(in srgb, var(--on-surface) 35%, var(--outline));
+  box-shadow:
+    var(--shadow-sm),
+    0 0 0 3px color-mix(in srgb, var(--on-surface) 8%, transparent);
+}
+
+.select-field:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  background-color: var(--surface-container-highest);
+}
+
+.select-field option {
+  font-weight: 500;
+  color: var(--on-surface);
+  background-color: var(--surface);
 }

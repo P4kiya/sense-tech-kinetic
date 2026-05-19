@@ -49,7 +49,7 @@ export function Hero() {
         >
           <motion.span
             variants={itemVariants}
-            className="text-kicker w-fit rounded-full bg-primary-container/90 px-3.5 py-1.5 ring-1 ring-primary/10"
+            className="badge-kicker w-fit"
           >
             Surveillance sécurité industrielle
           </motion.span>

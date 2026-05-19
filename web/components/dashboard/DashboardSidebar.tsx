@@ -14,8 +14,8 @@ export function DashboardSidebar({ onNavigate }: DashboardSidebarProps) {
 
   return (
     <div className="flex h-full flex-col py-4 md:py-6">
-      <p className="text-overline mb-3 px-4 md:mb-4">Admin</p>
-      <nav className="flex flex-1 flex-col gap-0.5 px-2" aria-label="Admin navigation">
+      <p className="text-overline mb-3 px-4 md:mb-4">Administration</p>
+      <nav className="flex flex-1 flex-col gap-0.5 px-2" aria-label="Navigation administration">
         {adminNavItems.map((item) => {
           const active =
             item.href === ADMIN_BASE
@@ -45,9 +45,9 @@ export function DashboardSidebar({ onNavigate }: DashboardSidebarProps) {
         <Link
           href="/"
           onClick={onNavigate}
-          className="text-caption font-medium text-on-surface-variant transition-colors hover:text-primary"
+          className="text-caption font-medium text-on-surface-variant transition-colors hover:text-on-surface"
         >
-          ← Back to site
+          ← Retour au site
         </Link>
       </div>
     </div>

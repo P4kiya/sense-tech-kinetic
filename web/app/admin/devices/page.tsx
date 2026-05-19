@@ -3,17 +3,17 @@ import { AdminPageHeader } from "@/components/dashboard/AdminPageHeader";
 import { Card } from "@/components/ui/Card";
 
 const devices = [
-  { name: "Gateway North", status: "Online", ip: "192.168.1.10", firmware: "2.4.1" },
-  { name: "Gateway South", status: "Online", ip: "192.168.1.11", firmware: "2.4.1" },
-  { name: "Repeater Bay 2", status: "Degraded", ip: "—", firmware: "2.3.8" },
+  { name: "Passerelle Nord", status: "En ligne" as const, ip: "192.168.1.10", firmware: "2.4.1" },
+  { name: "Passerelle Sud", status: "En ligne" as const, ip: "192.168.1.11", firmware: "2.4.1" },
+  { name: "Répéteur Baie 2", status: "Dégradé" as const, ip: "—", firmware: "2.3.8" },
 ];
 
 export default function AdminDevicesPage() {
   return (
     <>
       <AdminPageHeader
-        title="Devices"
-        description="Gateways and repeaters on your network. Static placeholder content."
+        title="Équipements"
+        description="Passerelles et répéteurs sur votre réseau. Contenu statique de démonstration."
       />
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {devices.map((d) => (
@@ -24,7 +24,7 @@ export default function AdminDevicesPage() {
               </div>
               <span
                 className={
-                  d.status === "Online"
+                  d.status === "En ligne"
                     ? "text-caption font-semibold text-success"
                     : "text-caption font-semibold text-warning"
                 }
@@ -39,7 +39,7 @@ export default function AdminDevicesPage() {
             </p>
             <p className="text-caption flex items-center gap-1.5">
               <GitBranch className="h-3.5 w-3.5" />
-              Firmware {d.firmware}
+              Micrologiciel {d.firmware}
             </p>
           </Card>
         ))}

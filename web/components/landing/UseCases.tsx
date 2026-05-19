@@ -37,7 +37,7 @@ export function UseCases() {
     >
       <div className="mx-auto max-w-6xl px-6 sm:px-8">
         <Reveal direction="up" distance={32} className="mx-auto mb-14 max-w-2xl text-center md:mb-16">
-          <span className="text-kicker mb-4 inline-block rounded-full bg-primary-container/80 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] ring-1 ring-primary/10">
+          <span className="badge-kicker mb-4">
             Secteurs
           </span>
           <h2 className="text-lead-title mb-4 text-balance">
@@ -53,8 +53,8 @@ export function UseCases() {
           {useCases.map((item) => (
             <RevealItem key={item.title} className="min-w-0">
               <Card className="flex h-full gap-4 rounded-2xl border-outline-variant/45 !p-6">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary-container/80 ring-1 ring-primary/10">
-                  <item.icon className="h-5 w-5 text-primary" strokeWidth={2} />
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-surface-container-highest ring-1 ring-outline-variant">
+                  <item.icon className="h-5 w-5 text-on-surface" strokeWidth={2} />
                 </div>
                 <div className="min-w-0">
                   <h3 className="text-section-title mb-2 text-[16px] font-semibold tracking-tight">

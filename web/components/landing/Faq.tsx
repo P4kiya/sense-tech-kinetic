@@ -43,9 +43,7 @@ export function Faq() {
     >
       <div className="mx-auto max-w-6xl px-6 sm:px-8">
         <Reveal direction="up" distance={32} className="mx-auto mb-12 max-w-2xl text-center md:mb-14">
-          <span className="text-kicker mb-4 inline-block rounded-full bg-surface-container-highest px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] ring-1 ring-outline-variant/50">
-            FAQ
-          </span>
+          <span className="badge-kicker mb-4">FAQ</span>
           <h2 className="text-lead-title mb-4 text-balance">Questions fréquentes</h2>
           <p className="text-[15px] leading-relaxed text-on-surface-variant">
             Tout ce qu&apos;il faut savoir avant de déployer Kinetic sur votre site.
@@ -59,10 +57,8 @@ export function Faq() {
               <RevealItem key={item.question}>
                 <div
                   className={cn(
-                    "overflow-hidden rounded-2xl border bg-surface transition-colors",
-                    isOpen
-                      ? "border-primary/25 shadow-card-sm"
-                      : "border-outline-variant/50 shadow-card-sm hover:border-outline-variant",
+                    "overflow-hidden rounded-2xl border bg-surface shadow-card-sm transition-[box-shadow,border-color,transform] duration-300 ease-out hover:-translate-y-0.5 hover:border-outline/80 hover:shadow-card-lg motion-reduce:transition-none motion-reduce:hover:translate-y-0",
+                    isOpen ? "border-outline shadow-card-md" : "border-outline-variant/50",
                   )}
                 >
                   <button
@@ -77,7 +73,7 @@ export function Faq() {
                     <span
                       className={cn(
                         "flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-surface-container-highest text-on-surface-variant transition-transform duration-200",
-                        isOpen && "rotate-180 bg-primary-container text-primary",
+                        isOpen && "rotate-180 bg-on-surface text-on-primary",
                       )}
                     >
                       <ChevronDown className="h-4 w-4" strokeWidth={2.25} />

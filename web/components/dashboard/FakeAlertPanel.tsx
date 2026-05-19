@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Zap } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
+import { Select } from "@/components/ui/Select";
 import { alertTypes, sensors, type AlertTypeValue } from "@/lib/mock-data";
 
 export function FakeAlertPanel() {
@@ -20,7 +21,7 @@ export function FakeAlertPanel() {
       triggeredAt: new Date().toISOString(),
     };
 
-    console.log("[FakeAlertPanel] Trigger alert:", payload);
+    console.log("[FakeAlertPanel] Déclenchement alerte :", payload);
     setLoading(true);
 
     try {
@@ -30,16 +31,13 @@ export function FakeAlertPanel() {
         body: JSON.stringify(payload),
       });
       const data = await res.json();
-      console.log("[FakeAlertPanel] API response:", data);
+      console.log("[FakeAlertPanel] Réponse API :", data);
     } catch (err) {
-      console.error("[FakeAlertPanel] Request failed:", err);
+      console.error("[FakeAlertPanel] Échec de la requête :", err);
     } finally {
       setLoading(false);
     }
   }
-
-  const selectClass =
-    "rounded-xl border border-outline-variant/55 bg-surface px-3.5 py-2.5 text-[15px] text-on-surface outline-none transition-colors focus:border-primary/60 focus:ring-2 focus:ring-primary/15";
 
   return (
     <Card elevated className="!p-6">
@@ -48,42 +46,37 @@ export function FakeAlertPanel() {
           <Zap className="h-5 w-5 text-warning" strokeWidth={2} />
         </div>
         <div>
-          <h2 className="text-section-title font-semibold tracking-tight">Fake Alert Panel</h2>
+          <h2 className="text-section-title font-semibold tracking-tight">Panneau d&apos;alerte démo</h2>
           <p className="text-caption mt-0.5 leading-relaxed">
-            Demo: simulate an alert for testing
+            Simuler une alerte pour les tests
           </p>
         </div>
       </div>
 
       <div className="flex flex-col gap-4">
         <label className="flex flex-col gap-2">
-          <span className="text-overline">Sensor</span>
-          <select
-            value={sensorId}
-            onChange={(e) => setSensorId(e.target.value)}
-            className={selectClass}
-          >
+          <span className="text-overline">Capteur</span>
+          <Select value={sensorId} onChange={(e) => setSensorId(e.target.value)}>
             {sensors.map((s) => (
               <option key={s.id} value={s.id}>
                 {s.name} — {s.location}
               </option>
             ))}
-          </select>
+          </Select>
         </label>
 
         <label className="flex flex-col gap-2">
-          <span className="text-overline">Alert type</span>
-          <select
+          <span className="text-overline">Type d&apos;alerte</span>
+          <Select
             value={alertType}
             onChange={(e) => setAlertType(e.target.value as AlertTypeValue)}
-            className={selectClass}
           >
             {alertTypes.map((t) => (
               <option key={t.value} value={t.value}>
                 {t.label}
               </option>
             ))}
-          </select>
+          </Select>
         </label>
 
         <Button
@@ -91,7 +84,7 @@ export function FakeAlertPanel() {
           disabled={loading || !sensorId}
           className="mt-1 w-full disabled:pointer-events-none disabled:opacity-45 sm:w-auto"
         >
-          {loading ? "Triggering…" : "Trigger Alert"}
+          {loading ? "Déclenchement…" : "Déclencher l'alerte"}
         </Button>
       </div>
     </Card>

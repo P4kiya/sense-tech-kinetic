@@ -6,7 +6,7 @@ export async function POST(request: Request) {
 
   return NextResponse.json({
     ok: true,
-    message: "Alert logged (demo — no persistence)",
+    message: "Alerte enregistrée (démo — sans persistance)",
     received: body,
   });
 }

@@ -5,8 +5,8 @@ export default function AdminAlertsPage() {
   return (
     <>
       <AdminPageHeader
-        title="Alerts"
-        description="Recent alert history across all sensors. Use Overview to trigger demo alerts."
+        title="Alertes"
+        description="Historique des alertes récentes sur tous les capteurs. Utilisez la vue d'ensemble pour déclencher des alertes démo."
       />
       <RecentAlertsTable />
     </>

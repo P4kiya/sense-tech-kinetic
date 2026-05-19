@@ -6,8 +6,8 @@ export default function AdminSensorsPage() {
   return (
     <>
       <AdminPageHeader
-        title="Sensors"
-        description="Full fleet list with status, gas level, and battery. Data is static for this prototype."
+        title="Capteurs"
+        description="Liste complète du parc avec statut, niveau de gaz et batterie. Données statiques pour ce prototype."
       />
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {sensors.map((sensor) => (

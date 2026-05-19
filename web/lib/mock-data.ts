@@ -22,7 +22,7 @@ export const sensors: Sensor[] = [
   {
     id: "s1",
     name: "CO-Zone A",
-    location: "Warehouse North",
+    location: "Entrepôt Nord",
     status: "NORMAL",
     gasLevelPpm: 12,
     batteryPercent: 92,
@@ -30,7 +30,7 @@ export const sensors: Sensor[] = [
   {
     id: "s2",
     name: "CO-Zone B",
-    location: "Loading Dock",
+    location: "Quai de chargement",
     status: "WARNING",
     gasLevelPpm: 48,
     batteryPercent: 78,
@@ -38,7 +38,7 @@ export const sensors: Sensor[] = [
   {
     id: "s3",
     name: "CO-Zone C",
-    location: "Boiler Room",
+    location: "Salle des chaudières",
     status: "DANGER",
     gasLevelPpm: 124,
     batteryPercent: 65,
@@ -46,7 +46,7 @@ export const sensors: Sensor[] = [
   {
     id: "s4",
     name: "CO-Zone D",
-    location: "Storage Bay 2",
+    location: "Baie de stockage 2",
     status: "NORMAL",
     gasLevelPpm: 8,
     batteryPercent: 88,
@@ -54,7 +54,7 @@ export const sensors: Sensor[] = [
   {
     id: "s5",
     name: "CO-Zone E",
-    location: "Maintenance Hall",
+    location: "Hall maintenance",
     status: "NORMAL",
     gasLevelPpm: 15,
     batteryPercent: 95,
@@ -62,7 +62,7 @@ export const sensors: Sensor[] = [
   {
     id: "s6",
     name: "CO-Zone F",
-    location: "Parking Garage",
+    location: "Parking souterrain",
     status: "WARNING",
     gasLevelPpm: 52,
     batteryPercent: 71,
@@ -81,7 +81,7 @@ export const recentAlerts: RecentAlert[] = [
     id: "a1",
     sensorName: "CO-Zone C",
     type: "CRITICAL",
-    message: "CO level exceeded critical threshold (124 PPM)",
+    message: "Niveau CO au-dessus du seuil critique (124 PPM)",
     timestamp: "2026-05-19T08:12:00",
     resolved: false,
   },
@@ -89,7 +89,7 @@ export const recentAlerts: RecentAlert[] = [
     id: "a2",
     sensorName: "CO-Zone B",
     type: "WARNING",
-    message: "Elevated CO detected (48 PPM)",
+    message: "CO élevé détecté (48 PPM)",
     timestamp: "2026-05-19T07:45:00",
     resolved: false,
   },
@@ -97,7 +97,7 @@ export const recentAlerts: RecentAlert[] = [
     id: "a3",
     sensorName: "CO-Zone F",
     type: "WARNING",
-    message: "Elevated CO detected (52 PPM)",
+    message: "CO élevé détecté (52 PPM)",
     timestamp: "2026-05-19T06:30:00",
     resolved: false,
   },
@@ -105,7 +105,7 @@ export const recentAlerts: RecentAlert[] = [
     id: "a4",
     sensorName: "CO-Zone A",
     type: "INFO",
-    message: "Scheduled calibration completed",
+    message: "Étalonnage planifié terminé",
     timestamp: "2026-05-19T05:00:00",
     resolved: true,
   },
@@ -113,15 +113,15 @@ export const recentAlerts: RecentAlert[] = [
     id: "a5",
     sensorName: "CO-Zone D",
     type: "WARNING",
-    message: "Brief spike detected (35 PPM) — auto-resolved",
+    message: "Pic bref détecté (35 PPM) — résolu automatiquement",
     timestamp: "2026-05-18T22:15:00",
     resolved: true,
   },
 ];
 
 export const alertTypes = [
-  { value: "CRITICAL", label: "Critical CO alert" },
-  { value: "WARNING", label: "Warning threshold" },
+  { value: "CRITICAL", label: "Alerte CO critique" },
+  { value: "WARNING", label: "Seuil d'avertissement" },
   { value: "INFO", label: "Info / maintenance" },
 ] as const;
 

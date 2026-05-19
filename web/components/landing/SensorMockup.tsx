@@ -11,7 +11,7 @@ export function SensorMockup() {
       <div className="relative px-6 pb-7 pt-8 sm:px-8 sm:pb-8 sm:pt-10">
         {/* Soft halo behind device — stays inside padding, no clipping */}
         <div
-          className="pointer-events-none absolute left-1/2 top-[42%] h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.07] blur-2xl"
+          className="pointer-events-none absolute left-1/2 top-[42%] h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full bg-on-surface/[0.04] blur-2xl"
           aria-hidden
         />
 
@@ -24,11 +24,11 @@ export function SensorMockup() {
                   className="h-2 w-2 shrink-0 rounded-full bg-success shadow-sm ring-2 ring-success/25"
                   aria-hidden
                 />
-                <Wifi className="h-4 w-4 text-primary" strokeWidth={2} />
+                <Wifi className="h-4 w-4 text-on-surface-variant" strokeWidth={2} />
               </div>
               <div className="flex flex-col items-center gap-0.5 py-1 text-center">
-                <p className="text-overline text-primary/90">CO PPM</p>
-                <p className="text-metric-lg text-primary tabular-nums tracking-tighter">24</p>
+                <p className="text-overline">CO PPM</p>
+                <p className="text-metric-lg tabular-nums tracking-tighter">24</p>
               </div>
               <div className="flex w-full items-end justify-between gap-1 text-caption">
                 <span className="inline-flex min-w-0 items-center gap-1 tabular-nums">
@@ -42,7 +42,7 @@ export function SensorMockup() {
               </div>
             </div>
             <div
-              className="w-2.5 shrink-0 bg-gradient-to-b from-primary via-primary to-primary/80 sm:w-3"
+              className="w-2.5 shrink-0 bg-on-surface sm:w-3"
               aria-hidden
             />
           </div>

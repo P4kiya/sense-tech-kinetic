@@ -5,14 +5,14 @@ export default function AdminSettingsPage() {
   return (
     <>
       <AdminPageHeader
-        title="Settings"
-        description="Organization preferences and thresholds. Static UI — no persistence."
+        title="Réglages"
+        description="Préférences d'organisation et seuils. Interface statique — sans persistance."
       />
       <Card className="max-w-xl">
-        <h3 className="text-section-title mb-2 font-semibold">Facility</h3>
+        <h3 className="text-section-title mb-2 font-semibold">Site</h3>
         <p className="text-caption leading-relaxed">
-          Name, timezone, and notification channels will be configured here in a future
-          release.
+          Le nom, le fuseau horaire et les canaux de notification seront configurés ici dans une
+          prochaine version.
         </p>
       </Card>
     </>

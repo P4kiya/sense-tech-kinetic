@@ -56,14 +56,14 @@ export function Packs() {
       className="relative scroll-mt-24 border-t border-outline-variant/30 bg-surface py-20 md:py-28"
     >
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_40%_at_50%_100%,rgba(79,107,237,0.06),transparent_55%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_40%_at_50%_100%,rgba(0,0,0,0.03),transparent_55%)]"
         aria-hidden
       />
 
       <div className="relative mx-auto max-w-6xl px-6 sm:px-8">
         <Reveal direction="up" distance={32} className="mx-auto mb-14 max-w-2xl text-center md:mb-16">
-          <span className="text-kicker mb-4 inline-flex items-center gap-2 rounded-full bg-primary-container/80 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] ring-1 ring-primary/10">
-            <Package className="h-3.5 w-3.5 text-primary" strokeWidth={2.5} aria-hidden />
+          <span className="badge-kicker mb-4">
+            <Package className="h-3.5 w-3.5" strokeWidth={2.5} aria-hidden />
             Offres
           </span>
           <h2 className="text-lead-title mb-4 text-balance">
@@ -82,14 +82,14 @@ export function Packs() {
                 className={cn(
                   "relative flex h-full flex-col rounded-2xl !p-0 transition-all duration-300",
                   pack.featured
-                    ? "border-2 border-primary/40 bg-gradient-to-b from-primary-container/55 via-surface to-surface shadow-card-md ring-1 ring-primary/15 hover:border-primary/55"
-                    : "border border-outline-variant/60 shadow-card-sm hover:border-outline-variant hover:shadow-card-md",
+                    ? "border-2 border-on-surface/15 bg-surface shadow-card-md hover:border-on-surface/20"
+                    : "border border-outline-variant/60",
                 )}
                 elevated={pack.featured}
               >
                 <div className="flex min-h-[36px] items-start justify-center px-6 pt-5">
                   {pack.featured ? (
-                    <span className="rounded-full bg-primary px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-on-primary shadow-md shadow-primary/25">
+                    <span className="rounded-full bg-primary px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-on-primary">
                       Le plus populaire
                     </span>
                   ) : (
@@ -137,10 +137,10 @@ export function Packs() {
                         className="flex gap-3.5 text-left text-[15px] font-medium leading-snug text-on-surface"
                       >
                         <span
-                          className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-success text-on-primary shadow-sm ring-2 ring-success/20"
+                          className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-outline-variant bg-surface-container-highest text-on-surface"
                           aria-hidden
                         >
-                          <Check className="h-4 w-4" strokeWidth={2.75} />
+                          <Check className="h-3.5 w-3.5" strokeWidth={2.25} />
                         </span>
                         <span className="min-w-0 pt-0.5">{line}</span>
                       </li>

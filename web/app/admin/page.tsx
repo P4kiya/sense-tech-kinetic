@@ -9,8 +9,8 @@ export default function AdminOverviewPage() {
   return (
     <>
       <AdminPageHeader
-        title="Overview"
-        description="Monitor your sensor fleet and simulate alerts for demos."
+        title="Vue d'ensemble"
+        description="Surveillez votre parc de capteurs et simulez des alertes pour les démonstrations."
       />
 
       <section className="mb-8">
@@ -19,7 +19,7 @@ export default function AdminOverviewPage() {
 
       <section className="mb-10 grid gap-8 lg:grid-cols-3">
         <div className="lg:col-span-2">
-          <h2 className="text-section-title mb-5 font-semibold tracking-tight">Sensor fleet</h2>
+          <h2 className="text-section-title mb-5 font-semibold tracking-tight">Parc de capteurs</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             {sensors.map((sensor) => (
               <SensorCard key={sensor.id} sensor={sensor} />

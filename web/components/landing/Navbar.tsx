@@ -35,7 +35,7 @@ export function Navbar() {
           )}
         >
           <div
-            className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-primary/40 to-transparent"
+            className="pointer-events-none absolute inset-x-0 top-0 h-px bg-outline-variant/80"
             aria-hidden
           />
 
@@ -59,7 +59,7 @@ export function Navbar() {
             </nav>
 
             <div className="flex shrink-0 items-center justify-end gap-2 sm:gap-3">
-              <Button href="#packs" className="hidden px-5 py-2 text-sm shadow-md shadow-primary/15 sm:inline-flex">
+              <Button href="#packs" className="hidden px-5 py-2 text-sm sm:inline-flex">
                 Commencer
               </Button>
               <Button href="#packs" className="px-4 py-2 text-xs sm:hidden">
@@ -96,7 +96,7 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="rounded-xl px-3 py-3 text-[15px] font-medium text-on-surface-variant transition-colors hover:bg-primary-container/50 hover:text-primary"
+                  className="rounded-xl px-3 py-3 text-[15px] font-medium text-on-surface-variant transition-colors hover:bg-surface-container-highest hover:text-on-surface"
                 >
                   {link.label}
                 </a>

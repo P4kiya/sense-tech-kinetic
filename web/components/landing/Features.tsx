@@ -30,19 +30,19 @@ export function Features() {
       className="relative scroll-mt-24 rounded-t-[2rem] border-t border-outline-variant/30 bg-surface pb-20 pt-16 shadow-[0_-8px_32px_rgba(28,33,48,0.04)] md:pb-28 md:pt-20"
     >
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-outline-variant to-transparent"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_-10%,rgba(79,107,237,0.07),transparent_55%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_-10%,rgba(0,0,0,0.03),transparent_55%)]"
         aria-hidden
       />
 
       <div className="relative mx-auto max-w-6xl px-6 sm:px-8">
         <Reveal direction="up" distance={36} className="mb-14 md:mb-16">
           <div className="max-w-xl">
-            <span className="text-kicker mb-4 inline-flex items-center gap-2 rounded-full bg-primary-container/80 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] ring-1 ring-primary/10">
-              <Cpu className="h-3.5 w-3.5 text-primary" strokeWidth={2.5} aria-hidden />
+            <span className="badge-kicker mb-4">
+              <Cpu className="h-3.5 w-3.5" strokeWidth={2.5} aria-hidden />
               Fonctionnalités
             </span>
             <h2 className="text-lead-title mb-4 text-balance">
@@ -58,15 +58,15 @@ export function Features() {
         <RevealStagger className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {features.map((feature, index) => (
             <RevealItem key={feature.title} className="min-w-0">
-              <Card className="group relative h-full rounded-2xl border-outline-variant/45 !p-7 transition-shadow duration-300 hover:border-primary/20 hover:shadow-card-md">
+              <Card className="group relative h-full rounded-2xl border-outline-variant/45 !p-7">
                 <span
-                  className="text-caption mb-5 flex h-7 w-7 items-center justify-center rounded-lg bg-surface-container-highest font-bold tabular-nums text-on-surface-variant transition-colors group-hover:bg-primary-container group-hover:text-primary"
+                  className="text-caption mb-5 flex h-7 w-7 items-center justify-center rounded-lg bg-surface-container-highest font-bold tabular-nums text-on-surface-variant transition-colors group-hover:bg-on-surface group-hover:text-on-primary"
                   aria-hidden
                 >
                   {index + 1}
                 </span>
-                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-container to-primary-container/40 ring-1 ring-primary/15 transition-transform duration-300 group-hover:scale-[1.03]">
-                  <feature.icon className="h-5 w-5 text-primary" strokeWidth={2} />
+                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-surface-container-highest ring-1 ring-outline-variant transition-transform duration-300 group-hover:scale-[1.03]">
+                  <feature.icon className="h-5 w-5 text-on-surface" strokeWidth={2} />
                 </div>
                 <h3 className="text-section-title mb-2.5 text-[16px] font-semibold tracking-tight">
                   {feature.title}
